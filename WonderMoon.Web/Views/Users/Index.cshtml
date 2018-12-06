@@ -1,0 +1,87 @@
+﻿@model  PagedList.IPagedList<Wonder.Core.Models.User>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "List Users";
+}
+
+<h2>List User</h2>
+
+<p style="text-align:right;">
+    @Html.ActionLink("Register User", "Create", new object { }, new { @class = "btn btn-success" })
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        <b>Search:</b> @Html.TextBox("query")
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </p>
+}
+<br />
+<table class="table">
+    <tr>
+        <th>
+            Rol
+        </th>
+        <th>
+            First Name
+        </th>
+        <th>
+            Second Name
+        </th>
+        <th>
+            Mobile Phone
+        </th>
+        <th>
+            Home Phone
+        </th>
+        <th>
+            Email Address
+        </th>
+        <th>
+            Primary Address
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rol.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobilePhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HomePhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimaryAddress)
+            </td>
+            <td>
+                <a href="/users/Details/@item.UserId"> <img src="~/Images/view.png" alt="View" /></a>
+                <a href="/users/Edit/@item.UserId"> <img src="~/Images/edit.png" alt="Edit" /></a>
+                <a href="/users/Delete/@item.UserId"> <img src="~/Images/delete.png" alt="Delete" /></a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, query = ViewBag.query }))
