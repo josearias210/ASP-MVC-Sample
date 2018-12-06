@@ -1,20 +1,24 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+# Proceso para configurar y ejecutar App
+1. Instale el Servidor Mysql y el conector de mysql para .NET (Ultima versión)
+2. Clone el repositorio
+3. Abra el proyecto en visual studio y espere que restaure los nuget
+4. Renombre el archivo  Web-sample.config a Web.config del proyecto "WonderMoon.Web"
+5. Edite connectionStrings llamado "WonderMoonContext" y coloque los datos del servidor Mysql
+6  Ejecute el aplicativo asegurandose de tener como proyecto de inicio "WonderMoon.Web"
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+# Pruebas Unitarias
+En caso que desee ejecutar las pruebas unitarias realice el siguiente proceso:
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+1. Renombre el archivo  App-sample.config a App.config del proyecto "WonderMoon.Test"
+2. Edite connectionStrings llamado "WonderMoonContext" y coloque los datos del servidor Mysql. Se recomienda no usar la misma base datos que usa el eplicativo.
+3. Ejecute las pruebas desde panel de pruebas de  Visual Studio
+
+# Información General
+
+1. La aplicacion cada vez que se ejecute va borrar la base datos y correr seeder para ingresar los roles y 100 usuario aletorios que facilitara ver las funcionalodad de la aplicación
+
+2. La estrategia usada es Code First
+
+
